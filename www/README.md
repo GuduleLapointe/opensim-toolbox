@@ -1,3 +1,8 @@
+# Authors:	Olivier van Helden, Gudule Lapointe (Speculoos.net)
+# http://www.speculoos.net/opensim-toolbox
+# Reditribution, modification and use are authorized, provided that 
+# this disclaimer, the authors name and Speculoos web address stay in the redistributed code
+
 gridinfo.php
 ============
 
@@ -21,6 +26,13 @@ This module displays both local and total active users
 	But local user is the only number comparable with other grids.
 	So we decided to display both.
 	
+Requirements
+------------
+
+The count of hypegrid active visitors requires the presence of the table "cacheusers", and running a batch script to update this table on a regular basis.
+Both should be included in this package and can be found on the project web page mentioned above.
+
+
 Installation
 ------------
 

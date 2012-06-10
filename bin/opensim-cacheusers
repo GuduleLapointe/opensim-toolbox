@@ -1,5 +1,10 @@
 #!/bin/sh
-#
+
+# Authors:	Olivier van Helden, Gudule Lapointe (Speculoos.net)
+# http://www.speculoos.net/opensim-toolbox
+# Reditribution, modification and use are authorized, provided that 
+# this disclaimer, the authors name and Speculoos web address stay in the redistributed code
+
 # Store useful information about all connections, including hypergrid visitors in a cache database
 # This information is needed to allow total visitor monthly count in web interface
 #
