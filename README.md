@@ -1,7 +1,7 @@
-# Authors:	Olivier van Helden, Gudule Lapointe (Speculoos.net)
-# http://www.speculoos.net/opensim-toolbox
-# Reditribution, modification and use are authorized, provided that 
-# this disclaimer, the authors name and Speculoos web address stay in the redistributed code
+Authors:	Olivier van Helden, Gudule Lapointe (Speculoos.net)
+http://www.speculoos.net/opensim-toolbox
+Reditribution, modification and use are authorized, provided that 
+this disclaimer, the authors name and Speculoos web address stay in the redistributed code
 
 Linux OpenSim-Toolbox
 =====================
