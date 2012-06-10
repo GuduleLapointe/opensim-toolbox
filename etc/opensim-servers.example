@@ -1,0 +1,9 @@
+#opensim servers list
+# commented lines are ignored
+# command can be set if specific
+# if not set, default value is mono OpenSim.exe
+# values are separated by tabulations
+# instance	/path/to/bin	[command]
+robust	/path/to/robust/folder/bin	mono Robust.exe -inifile Robust.HG.ini
+sim1	/path/to/opensim1/bin
+sim2	/path/to/opensim2/bin
