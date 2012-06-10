@@ -1,0 +1,12 @@
+#!/bin/sh
+# Shared Preferences for opensim-toolbox
+
+# Database connection
+dbName=opensim
+dbHost=localhost
+dbPort=3306
+dbUser=opensim
+dbPassword=opensim
+
+# Preference file with list of configured OpenSim servers
+ostab=/opt/opensim/etc/opensim-servers

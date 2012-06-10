@@ -1,0 +1,79 @@
+#!/bin/sh
+#
+# Store useful information about all connections, including hypergrid visitors in a cache database
+# This information is needed to allow total visitor monthly count in web interface
+#
+# Information is parsed from OpenSim log
+# This program must be run by cron to allow accurate information
+# The last line parsed is stored, so that returning process with only parse new lines
+# If no stored line or stored line is not present (for example after a log rotation), 
+# the parsing starts from top of the log
+#
+# The cache database must be created prior first run
+# mysql $dbName < opensim-toolbox/mysql/opensim-cacheusers.sql
+
+maxProcessLines=100000
+
+DEBUG=yes
+SYNTAX=""
+ENDSUCCESS=" "
+#ENDFAILED="Oh merde"
+
+PATH=$(dirname "$0"):$PATH
+
+helpFunctions="$(which helpfunctions)"
+[ "$helpFunctions" ] && . $helpFunctions
+log "help functions loaded" || exit 1
+
+TRACE=/tmp/$PGM.processed
+
+[ "$ostab" ] || end 2 "ostab not set"
+[ -f "$ostab" ] || end 3 "ostab not found"
+
+query()
+{
+	echo "$@" | mysql -s -h $dbHost -u$dbUser -p$dbPassword $dbName
+	return $?
+}
+
+if [ $1 ]
+	then
+	robustLog=$1
+else
+	robustPath=$(egrep "^robust" $ostab | head -1 | cut -f 2)
+	[ ! "$robustPath" ] && end 2 robust path not found
+	robustLog=`(ls -rt "$robustPath"/Robust*.log; ls -rt "$robustPath"/Robust.log; ls -rt "$robustPath"/Robust.HG.log) | tail -1`
+	[ ! "$robustLog" ] && end 3 robust log not found
+fi
+
+[ ! -f "$robustLog" ] && echo "$robustLog not found" && end 4 robust log does not exist
+
+
+log log file $robustLog
+log start $(date)
+(
+	rm -f "$TMP.begin"
+	[ -f "$TRACE" ] && cp "$TRACE" "$TMP.begin" || log "no $TRACE"
+	[ -f "$TMP.begin" ] && log "processing $maxProcessLines lines from "$(cat "$TMP.begin") || log "processing $maxProcessLines lines"
+	[ -f "$TMP.begin" ] && grep -A $maxProcessLines -f "$TMP.begin" "$robustLog" || head -$maxProcessLines "$robustLog"
+) | egrep "GATEKEEPER SERVICE.*Login request for" \
+	| sed "s/^\([0-9-]* [0-9:,]*\).*for \(.*\) @ \(.*\) (\([0-f-]*\)).*/\\1 \\4 \\3 \\2/" \
+	| sed "s/\([^\. ]*\)\.\([^ ]*\) @.*/\\1 \\2/" \
+	| while read date time userid grid avatar
+do
+	login=$(date +%s -d "$date $time")
+	query="INSERT INTO cacheusers (userid, avatar, grid, login) VALUES ('$userid', '$avatar', '$grid', '$login') ON DUPLICATE KEY UPDATE avatar=VALUES(avatar), grid=VALUES(grid), login=VALUES(login);"
+	query "$query" || end 5 mysql exited with code $?
+	log "$date $time $avatar @ $grid"
+	# echo
+	echo "$date $time" > "$TRACE" || end 6
+done
+
+(
+	[ -f "$TMP.begin" ] && grep -A $maxProcessLines -f "$TMP.begin" "$robustLog" || head -$maxProcessLines "$robustLog"
+) | tail -1 | sed "s/^\([0-9-]* [0-9:,]*\).*/\\1/" > "$TRACE"
+
+log "last processed "$(cat "$TRACE")
+log  end $(date)
+
+end 0

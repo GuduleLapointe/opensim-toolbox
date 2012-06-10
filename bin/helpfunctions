@@ -88,3 +88,8 @@ osConsole() {
 	lr=$(printf "\n\b")
 	screen -S $osInstance -X stuff "$(echo "$osCommand$lr")"
 }
+
+for configfile in /etc/opensim-toolbox ~/etc/opensim-toolbox $BASEDIR/etc/opensim-toolbox
+do
+	[ -f "$configfile" ] && . "$configfile"
+done
