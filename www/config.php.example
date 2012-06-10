@@ -1,0 +1,10 @@
+<?php
+// This config file follows the same name convention as the config files of other modules like group, offline messages or OpenSim Service Module
+// If you only use gridinfo.php, you can rename this file as config.php
+// If you use other module, you can simply keep these module's config.php instead
+    $dbName = "opensim";
+    $dbHost = "localhost";
+    $dbPort = 3306;
+    $dbUser = "opensim";
+    $dbPassword	="opensim";
+?>
