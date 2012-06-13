@@ -1,6 +1,6 @@
 // Gudule's Gate
 //
-// Authors:	Olivier van Helden, Gudule Lapointe (Speculoos.net)
+// Authors:    Olivier van Helden, Gudule Lapointe (Speculoos.net)
 // http://www.speculoos.net/opensim-toolbox
 // Reditribution, modification and use are authorized, provided that
 // this disclaimer, the authors name and Speculoos web address stay in the redistributed code
@@ -9,7 +9,7 @@
 // Destination can be read from landmark or from prim description
 //
 // WARNING: Depends of following functions in server's config:
-//	osTeleportAgent
+//    osTeleportAgent
 //      osGetInventoryLandmarkParams
 //
 // Configuration:
@@ -128,10 +128,10 @@ default
         llSetAlpha(alphaActive, ALL_SIDES);
         llSetColor(colorInactive, ALL_SIDES);
 
-		// Landmark read
-		// Uncomment this section only if osGetInventoryLandmarkParams 
-		// is implemented on your server
-		
+        // Landmark read
+        // Uncomment this section only if osGetInventoryLandmarkParams 
+        // is implemented on your server
+        
         // if (useLandmark && llGetInventoryName(INVENTORY_LANDMARK, 0)) {
         //     landmark = llGetInventoryName(INVENTORY_LANDMARK, 0);
         //     destination = osGetInventoryLandmarkParams(landmark, LANDMARK_ADDRESS);
@@ -153,7 +153,7 @@ default
         //     llRemoveInventory(landmark);
         // }
 
-		// End Landmark read
+        // End Landmark read
 
         if(destination == "" && useObjectName) {
             if(llGetObjectName() != "" & llGetObjectName() != "Primitive")
@@ -169,11 +169,11 @@ default
                 destination = llGetObjectDesc();
                 destinationName = destination;
             }
-			destinationURL = "secondlife://" 
-				+ strReplace(llEscapeURL(
-				strReplace(destination, "http://", "")
-				), "%3A", ":" ) + "/";
-		}
+            destinationURL = "secondlife://" 
+                + strReplace(llEscapeURL(
+                strReplace(destination, "http://", "")
+                ), "%3A", ":" ) + "/";
+        }
         destination = strReplace(destination, myGatekeeper + ":", "");
         destinationURL = strReplace(destinationURL, myGatekeeper + ":", "");
         if(destination == "" || destination == " ") {
