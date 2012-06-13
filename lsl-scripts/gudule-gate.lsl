@@ -1,4 +1,4 @@
-// Gudule's Gate
+// Gudule's Gate 2.7
 //
 // Authors:    Olivier van Helden, Gudule Lapointe (Speculoos.net)
 // http://www.speculoos.net/opensim-toolbox
