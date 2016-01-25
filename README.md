@@ -1,3 +1,8 @@
+# These tools are deprecated
+
+And they are likely to bug on recent OpenSim installations.
+Please have a look at [opensim-debian](https://github.com/GuduleLapointe/opensim-debian) instead
+
 Authors:	Olivier van Helden, Gudule Lapointe (Speculoos.net)
 http://www.speculoos.net/opensim-toolbox
 Reditribution, modification and use are authorized, provided that 
