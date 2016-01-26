@@ -1,5 +1,10 @@
-Authors:	Olivier van Helden, Gudule Lapointe (Speculoos.net)
-http://www.speculoos.net/opensim-toolbox
+These tools are probably deprecated
+===================================
+Please check https://gitlab.magiiic.com/GuduleLapointe/opensim-debian for a more recent set of tools.
+---------------------
+
+Authors:	Olivier van Helden, Gudule Lapointe (SpeculoosNet)
+http://speculoos.magiiic.com/opensim-toolbox
 Reditribution, modification and use are authorized, provided that 
 this disclaimer, the authors name and Speculoos web address stay in the redistributed code
 
