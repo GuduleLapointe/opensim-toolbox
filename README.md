@@ -1,12 +1,12 @@
-These tools are probably deprecated
+These tools are deprecated
 ===================================
-Please check http://speculoos.magiiic.com/en/opensim-toolbox for a more recent set of tools.
+Please check https://github.com/GuduleLapointe/opensim-debian for a more recent set of tools.
 ---------------------
 
 
 Authors:	Olivier van Helden, Gudule Lapointe (SpeculoosNet)  
-http://speculoos.magiiic.com/opensim-toolbox  
-Reditribution, modification and use are authorized, provided that this disclaimer, the authors name and Speculoos web address stay in the redistributed code
+http://speculoos.world/opensim-toolbox  
+Redistribution, modification and use are authorized, provided that this disclaimer, the authors name and Speculoos web address stay in the redistributed code
 
 Linux OpenSim-Toolbox
 =====================
